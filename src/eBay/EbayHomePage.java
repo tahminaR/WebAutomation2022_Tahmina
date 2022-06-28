@@ -55,7 +55,7 @@ public class EbayHomePage {
     }
 
     /**
-     * @throws InterruptedException
+     * A Ebay user should be able to shop by category
      */
     @Test //1
     public static void checkShopByCategoryLinkFunctionality() throws InterruptedException {
@@ -65,7 +65,7 @@ public class EbayHomePage {
         driver.findElement(By.xpath("//i[@id='gh-shop-ei']")).click();
         Thread.sleep(2000);
         //user should be able to click on Home and garden link
-        driver.findElement(By.xpath("//tbody/tr/td[3]/h3[2]/a[1]")).click();
+        driver.findElement(By.cssSelector("#gh-sbc > tbody > tr > td:nth-child(3) > h3:nth-child(3) > a")).click();
         Thread.sleep(3000);
         //user should be able to click on End Tables from Furniture page (Furniture)
         driver.findElement(By.xpath("//*[@id=\"mainContent\"]/section[1]/div[2]/a[1]/div[1]")).click();
@@ -84,9 +84,8 @@ public class EbayHomePage {
         Thread.sleep(4000);
         //user should be able to click on cart icon on the top of the page
         driver.findElement(By.xpath("//i[@id='gh-cart-n']")).click();
-
         Thread.sleep(2000);
-        // user should be able to see item has removed successfully
+        // user should be able to see item has added and display subtotal of the product.
         String expectedText = "Subtotal";
         String actualText = driver.findElement(By.xpath("//*[@id=\"mainContent\"]/div/div[4]/div/div[2]/div[4]/div[1]/span/span/span")).getText();
         Assert.assertEquals(actualText, expectedText, "text not found ");
@@ -103,11 +102,9 @@ public class EbayHomePage {
 
     @Test //2
     public static void checkEbaySearchBoxFunctionality() throws InterruptedException {
-
-        //user should be able to successfully land in the Ebay homepage
-        //user is able to click on the search box
+        //Scenario: eBay's Home page search box Functionality Checking
+        //user should be able to successfully landed in the Ebay homepage
         //user is able to enter valid product name in the search box
-
         driver.findElement(By.xpath("//*[@id=\"gh-ac\"]")).sendKeys("microwave oven");
         Thread.sleep(4000);
         //user is able to click non the search button
@@ -198,11 +195,10 @@ public class EbayHomePage {
      * this method will verify user can successfully add product in shopping cart
      */
 
-
     @Test //5
     public static void shoppingCartFunctionality() throws InterruptedException {
 
-        //user should be able to successfully land in the Ebay homepage
+        //user should be able to successfully landed in the Ebay homepage
         //user is able to click on Home & Garden link from ebay's home page
         Thread.sleep(4000);
         driver.findElement(By.xpath("//*[@id=\"mainContent\"]/div[1]/ul/li[6]")).click();
@@ -233,15 +229,13 @@ public class EbayHomePage {
         Thread.sleep(1000);
         driver.close();
     }
-
     /**
      * this method will verify sign in functionality with Invalid credential unsuccessful
      */
 
-
     @Test //6
     public static void checkEbaySignInFunctionalityWithInvalidCredential() throws InterruptedException {
-
+//user should be able to successfully landed in the Ebay homepage
         //user should be able to find the text "My Ebay" in the Ebay Homepage top of the right corner
         driver.findElement(By.xpath("//*[@id=\"gh-eb-My\"]/div/a[1]")).getText();
         Thread.sleep(4000);
@@ -266,14 +260,13 @@ public class EbayHomePage {
         Thread.sleep(1000);
         driver.close();
     }
-
     /**
      * this method will verify sign in functionality with Valid credential successful
      */
 
     @Test //7
     public static void checkEbaySignInFunctionalityWithValidCredential() throws InterruptedException {
-
+        //user should be able to successfully landed in the Ebay homepage
         //user should be able to find the text "My Ebay" in the Ebay Homepage top of the right corner
         driver.findElement(By.xpath("//*[@id=\"gh-eb-My\"]/div/a[1]")).getText();
         Thread.sleep(4000);
@@ -292,7 +285,7 @@ public class EbayHomePage {
         driver.findElement(By.xpath("//*[@id=\"sgnBt\"]")).click();
         Thread.sleep(5000);
         //a user should be able to successfully log in the user-homepage and user should see his/her name in the top left of the ebay homepage
-        String expectedText = "israt";
+        String expectedText = "tahmina";
         Thread.sleep(10000);
         String actualText = driver.findElement(By.xpath("//*[@id=\"gh-ug\"]/b[1]")).getText();
         Thread.sleep(5000);
@@ -306,23 +299,19 @@ public class EbayHomePage {
         driver.close();
     }
 
-
     /**
      * user story: eBay help and contact button should work properly
      * This test method verify successfully click in the help and contact button and landed on the "customer service" page
      */
-
-
     @Test //8
     public static void checkCustomerServiceLinkFunctionality() throws InterruptedException {
-
+        //user should be able to successfully landed in the Ebay homepage
         Thread.sleep(4000);
+        //user should be able to click on Help & Contact link
         driver.findElement(By.xpath("//a[@href='https://ocsnext.ebay.com/ocs/home']")).click();
         Thread.sleep(6000);
-        driver.findElement(By.xpath("//*[@id=\"checkbox\"]")).click();
-        Thread.sleep(6000);
-        Thread.sleep(6000);
         String actualText = driver.findElement(By.xpath("//td[@id='gh-title']")).getText();
+        //user should be able to see Customer Service page display
         Thread.sleep(5000);
         String expectedText = "Customer Service";
         if (actualText.equals(expectedText)) {
@@ -330,19 +319,18 @@ public class EbayHomePage {
         } else {
             System.out.println("Test Fail");
         }
-
+        Thread.sleep(1000);
         driver.close();
-
     }
 
     /**
-     * @throws InterruptedException
+     * user should be able to get product from Advanced Search link
      */
     @Test //9
     public static void eBayHomePageAdvancedSearchFunctionality() throws InterruptedException {
         //Scenario: eBay's Home page "Advance" link Functionality Checking
         //Given user on amazon Home page
-        //user should be able to click on AdvancedSearch link
+        //user should be able to click on Advanced Search link on top of the ebay's home page right corner
         Thread.sleep(6000);
         driver.findElement(By.xpath("//a[@id='gh-as-a']")).click();
         Thread.sleep(5000);
@@ -373,7 +361,7 @@ public class EbayHomePage {
         Thread.sleep(4000);
         String actualText = driver.findElement(By.cssSelector("#CUSTOMIZATION0-0-12-0-dialog-title > span")).getText();
         Thread.sleep(4000);
-        Assert.assertEquals(actualText, expectedText, "pop up window not displayed");
+        Assert.assertEquals(actualText, expectedText, "popup window not displayed");
 
         Thread.sleep(1000);
         driver.close();
@@ -405,7 +393,7 @@ public class EbayHomePage {
     }
 
     /**
-     * This test method will verify successfully search in the search box functionality with invalid product
+     * should navigate and display a massage when search with invalid product item
      */
 
 
@@ -435,10 +423,10 @@ public class EbayHomePage {
     }
 
     /**
-     *
+     *  should display valid product
      */
     @Test //12
-    public static void checkSearchBoxFunctionalityWithValidOnEbay() throws InterruptedException {
+    public static void checkSearchBoxFunctionalityWithValidProductOnEbay() throws InterruptedException {
 
         // user is able to successfully landed in ebay's home page
         Thread.sleep(2000);
@@ -457,13 +445,22 @@ public class EbayHomePage {
         // user should be able to click on "Office" checkBox
         driver.findElement(By.xpath("//input[@aria-label='Office']")).click();
         // Verification
+        //user should be able to see the page display with results for home decoration
         String expectedText = "results for home decoration";
         String actualText = driver.findElement(By.id("//*[@id=\"mainContent\"]/div[1]/div/div[2]/div[1]/div[1]/h1")).getText();
+        //successfully navigate to result page
         System.out.println("Actual Text : " + actualText);
         Assert.assertEquals(actualText, expectedText, "text not found ");
         Thread.sleep(1000);
         driver.close();
     }
+
+    /**
+     *
+     */
+
+
+
 
 }
 
