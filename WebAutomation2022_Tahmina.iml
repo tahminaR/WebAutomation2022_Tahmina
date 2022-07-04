@@ -442,7 +442,9 @@
           <root url="jar://$MODULE_DIR$/ExternalLibrary/TestNG/testng-7.6.0.jar!/" />
         </CLASSES>
         <JAVADOC />
-        <SOURCES />
+        <SOURCES>
+          <root url="jar://$USER_HOME$/.ideaLibSources/testng-7.6.0-sources.jar!/" />
+        </SOURCES>
       </library>
     </orderEntry>
   </component>
