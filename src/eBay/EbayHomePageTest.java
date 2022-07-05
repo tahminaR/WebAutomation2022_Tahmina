@@ -101,16 +101,21 @@ public class EbayHomePageTest extends EbayHomePage {
     public void testClothingAndAccessoriesElement() throws InterruptedException {
         clothingAndAccessoriesElement();
     }
-@Test //Custom Xpath 19
+
+    @Test //Custom Xpath 19
     public void testBestMatchDropDownFunctionality() throws InterruptedException {
-    bestMatchDropDownFunctionality();
-}
-@Test // this TC fail
+        bestMatchDropDownFunctionality();
+    }
+
+    @Test // Xpath 20
     public void textJewelryWatchesFunctionality() throws InterruptedException {
-    jewelryWatchesFunctionality();
-}
+        jewelryWatchesFunctionality();
+    }
 
-
+    @Test //Xpath  21
+    public void testVerifyAllCategoriesFunctionality() throws InterruptedException {
+        VerifyAllCategoriesFunctionality();
+    }
 
 
 }

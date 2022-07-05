@@ -675,7 +675,7 @@ public class EbayHomePage extends TestBase {
     }
 
 
-    @Test
+
     public void jewelryWatchesFunctionality() throws InterruptedException {
         //Given user on amazon Home page
         Thread.sleep(2000);
@@ -692,20 +692,51 @@ public class EbayHomePage extends TestBase {
         driver.findElement(By.xpath("//span[contains(text(),'Price')]")).click();
         Thread.sleep(6000);
         // user should be able to select Price ranges from price list in Dropdown arrow (under $7,500.00)
-        driver.findElement(By.xpath("//span[@xpath='1']")).click();
+        driver.findElement(By.xpath("//*[@id=\"s0-28_1-9-0-1[3]-0-0-6-5-4[7]-flyout\"]/div/ul/li[1]/a/span[1]")).click();
         Thread.sleep(4000);
-////Verification
-//        //user should be able to see Rolex Watches under $7,500.00 displayed
-//        String expectedText = "Rolex Watches under $7,500.00";
-//        Thread.sleep(4000);
-//        String actualText = driver.findElement(By.xpath("")).getText();
-//        Thread.sleep(5000);
-//        //successfully navigate to Rolex Watches under $7,500.00 page
-//        System.out.println("Actual Text: " + actualText);
-//        Assert.assertEquals(actualText, expectedText, "text not found");
+//Verification
+        //user should be able to see Rolex Watches under $7,500.00 displayed
+        String expectedText = "Rolex Watches under $7,500.00";
+        Thread.sleep(4000);
+        String actualText = driver.findElement(By.xpath("//h1[@class='b-pageheader']//span[contains(text(),'Rolex Watches under $7,500.00')]")).getText();
+        Thread.sleep(5000);
+        //successfully navigate to Rolex Watches under $7,500.00 page
+        System.out.println("Actual Text: " + actualText);
+        Assert.assertEquals(actualText, expectedText, "text not found");
 
 
     }
+@Test
+    public static void VerifyAllCategoriesFunctionality() throws InterruptedException {
+        //Scenario: eBay's Home page All Categories' dropdown list Functionality Checking
+        //user should be able to successfully landed in the Ebay homepage
+        //user is able to click on All Categories' dropdown list
+        driver.findElement(By.xpath("//select[@id='gh-cat']")).click();
+        Thread.sleep(2000);
+        //user is able to select any category from All Categories' dropdown list (Art)
+        driver.findElement(By.xpath("//option[contains(text(),'Art')and@value='550']")).click();
+        Thread.sleep(2000);
+        //user is able to click non the search button
+        driver.findElement(By.xpath("//input[@id='gh-btn'and@type='submit']")).click();
+        Thread.sleep(1000);
+        // user should be able to click on "Andy Warhol Rare Vintage 1974 Original Washington Monument Screen print" link
+        driver.findElement(By.xpath("//div[normalize-space()='Andy Warhol Rare Vintage 1974 Original Washington Monument Screenprint']")).click();
+        Thread.sleep(2000);
+        //user should be able to click on Add to cart
+        driver.findElement(By.xpath("//a[@id='atcRedesignId_btn']")).click();
+        Thread.sleep(1000);
+        //user should be able to click on "Go to cart" link in popup window.
+        driver.findElement(By.xpath("//a[@href='https://cart.ebay.com?_trksid=p2484178.m4865.l8876']")).click();
+        Thread.sleep(2000);
+        // Verification
+        // user should be able to see item has removed successfully
+        String expectedText = "Shopping cart (1 item)";
+        Thread.sleep(5000);
+        String actualText = driver.findElement(By.xpath("//h1[@class='main-title'and@data-test-id='main-title']")).getText();
+        Assert.assertEquals(actualText, expectedText, "text not found ");
+        Thread.sleep(1000);
+        driver.close();
+   }
 
 
 }
